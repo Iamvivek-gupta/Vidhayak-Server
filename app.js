@@ -7,9 +7,9 @@ var app = express()
 app.use(cors())
 app.use(express.json())
  
-app.post('/', function (req, res, next) {
+app.get('/', function (req, res, next) {
   
-res.send("hallo world")
+res.send("hallo worVivek")
 // const msg = {
 //   to: 'akshaysingh9198327725@gmail.com', // Change to your recipient
 //   from: 'vivekvivek367@gmail.com', // Change to your verified sender
