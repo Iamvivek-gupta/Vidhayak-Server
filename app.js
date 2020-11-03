@@ -7,7 +7,7 @@ var app = express()
 app.use(cors())
 app.use(express.json())
  
-app.get('/', function (req, res, next) {
+app.get('/this', function (req, res, next) {
   
 res.send("hallo worVivek")
 // const msg = {
