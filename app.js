@@ -1,15 +1,40 @@
-var express = require('express')
-var cors = require('cors')
-const sgMail = require('@sendgrid/mail')
-sgMail.setApiKey('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')
-var app = express()
+// var express = require('express')
+// var cors = require('cors')
+// var nodemailer = require('nodemailer');
+// const sgMail = require('@sendgrid/mail')
+// sgMail.setApiKey('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')
+// var app = express()
  
-app.use(cors())
-app.use(express.json())
+// app.use(cors())
+// app.use(express.json())
  
-app.get('/', function (req, res, next) {
+// app.get('/', function (req, res, next) {
   
-res.send("hallo worVivek")
+    
+
+    // var transporter = nodemailer.createTransport({
+    //   service: 'gmail',
+    //   auth: {
+    //     user: 'vivekvivek367@gmail.com',
+    //     pass: 'pramilavijay123'
+    //   }
+    // });
+    
+    // var mailOptions = {
+    //   from: 'vivekvivek367@gmail.com',
+    //   to: 'vivek.jmdsmvdu@gmail.com',
+    //   subject: 'testing',
+    //   html: `<h1>hallon baloon</h1>`
+    // };
+    
+    // transporter.sendMail(mailOptions, function(error, info){
+    //   if (error) {
+    //     console.log(error);
+    //   } else {
+    //     console.log('Email sent: ' + info.response);
+    //   }
+    // });
+    // res.send("email set")
 // const msg = {
 //   to: 'akshaysingh9198327725@gmail.com', // Change to your recipient
 //   from: 'vivekvivek367@gmail.com', // Change to your verified sender
@@ -27,73 +52,73 @@ res.send("hallo worVivek")
 //     res.send(error)
 //   })
 
-})
+//})
  
-app.listen(80, function () {
-  console.log('CORS-enabled web server listening on port 80')
-})
+// app.listen(80, function () {
+//   console.log('CORS-enabled web server listening on port 80')
+// })
 
 
 // //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
 
 
 
-// const express = require('express');
-// const dotenv = require('dotenv');
-// const morgan = require('morgan');
-// const mongoose = require('mongoose');
-// const cors = require('cors');
-// const userRouter = require('./routes/userRoute');
-// const app = express();
+const express = require('express');
+const dotenv = require('dotenv');
+const morgan = require('morgan');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const userRouter = require('./routes/userRoute');
+const app = express();
 
-// dotenv.config({ path : './config.env'})
-// console.log(process.env.DATABASE);
-// console.log(process.env.DATABASE_PASSWORD);
-
-
-// // connect Mongodb Compass
-
-// const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
-
-// mongoose.connect(DB, {
-//     useNewUrlParser : true,
-//     useCreateIndex : true,
-//     useFindAndModify : false,
-//     useUnifiedTopology : true
-// }).then(con =>{
-//     //console.log(con.connections);
-//     console.log("databas connected")
-// }).catch(error =>{
-//     console.log(error);
-// });
+dotenv.config({ path : './config.env'})
+console.log(process.env.DATABASE);
+console.log(process.env.DATABASE_PASSWORD);
 
 
-// // 1) MIDDLEWARE
-// app.use(cors());
-// app.use(morgan('dev'));
+// connect Mongodb Compass
 
-// app.use(express.json());
+const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
 
-// app.use((req,res,next) =>{
-//     console.log('hallo from Middleware!!!!');
-//     next();
-// })
-
-
-// app.use((req,res,next) =>{
-//     req.requestTime = new Date().toISOString();
-//     //console.log(req.headers);
-//     next();
-// })
+mongoose.connect(DB, {
+    useNewUrlParser : true,
+    useCreateIndex : true,
+    useFindAndModify : false,
+    useUnifiedTopology : true
+}).then(con =>{
+    //console.log(con.connections);
+    console.log("databas connected")
+}).catch(error =>{
+    console.log(error);
+});
 
 
+// 1) MIDDLEWARE
+app.use(cors());
+app.use(morgan('dev'));
 
-// // 3) ROUTES
-// app.use('/api/v1/users', userRouter);
+app.use(express.json());
 
-// // 4) START SERVERS
-//  const port = process.env.PORT || 100;
+app.use((req,res,next) =>{
+    console.log('hallo from Middleware!!!!');
+    next();
+})
 
-// app.listen(port, () =>{
-//       console.log(`App is running on Port ${port}...`)
-// });
+
+app.use((req,res,next) =>{
+    req.requestTime = new Date().toISOString();
+    //console.log(req.headers);
+    next();
+})
+
+
+
+// 3) ROUTES
+app.use('/api/v1/users', userRouter);
+
+// 4) START SERVERS
+ const port = process.env.PORT || 100;
+
+app.listen(port, () =>{
+      console.log(`App is running on Port ${port}...`)
+});
