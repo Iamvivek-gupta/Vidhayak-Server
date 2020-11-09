@@ -114,6 +114,10 @@ app.use((req,res,next) =>{
 
 
 // 3) ROUTES
+
+app.get('/', function(req,res){
+    res.send("haalo from node js")
+})
 app.use('/api/v1/users', userRouter);
 
 // 4) START SERVERS
