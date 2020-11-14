@@ -16,7 +16,7 @@ exports.createUser = async (req, res) =>{
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-              user: 'vivekvivek367@gmail.com',
+              user: 'vivek.jmdsmvdu@gmail.com',
               pass: 'pramilavijay123'
             }
           });
