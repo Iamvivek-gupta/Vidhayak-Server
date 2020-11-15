@@ -22,7 +22,7 @@ exports.createUser = async (req, res) =>{
           });
           
           var mailOptions = {
-            from: 'vivekvivek367@gmail.com',
+            from: 'vivek.jmdsmvdu@gmail.com',
             to: email,
             subject: 'Welcome',
             html: `<h1>thank you for contacting to us our team reach you shortly</h1>`
